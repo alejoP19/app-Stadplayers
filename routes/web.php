@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,3 +20,5 @@ Route::get('/', function () {
 Route::get('/perfil', function () {
     return view('partials.perfil');
 });
+
+Route::resource('usuarios', UserController::class);

@@ -14,7 +14,14 @@ return new class extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('pais de origen');
+            $table->renameColumn('name', 'nickname');
+            $table->string('primer_nombre')->after('id');
+            $table->string('segundo_nombre')->after('primer_nombre');
+            $table->string('primer_apellido')->after('segundo_nombre');
+            $table->string('segundo_apellido')->after('primer_apellido');
+          
+     
+          
         });
     }
 

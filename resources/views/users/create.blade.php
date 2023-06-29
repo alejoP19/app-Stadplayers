@@ -26,7 +26,7 @@
                     <div class="card-body" autocomplete="off">
                         <div class="input-group">
                             <div class="input-group-prepend">
-                                <span class="input-group-text" id="">Apodo de Usuario</span>
+                                <span class="input-group-text" id="">Nickname</span>
                             </div>
                             <input type="text" class="form-control">
                         </div>
@@ -65,7 +65,7 @@
 
 
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-11 ">
                                 <form action="{{ route('usuarios.store') }}" method="POST">
                                     @csrf
                                     @method('INSERT')
@@ -77,8 +77,8 @@
                                     @endif
                                 </form>
                             </div>
-                            <div class="col-12">
-                                <a class="btn btn-success  mr-0" href="{{ route('usuarios.index') }}"> Volver</a>
+                            <div class="col-1 ">
+                                <a class="btn btn-success  me-0" href="{{ route('usuarios.index') }}"> Volver</a>
                                 @if ($message = Session::get('success'))
                                     <div class="alert alert-success">
                                         <p>{{ $message }}</p>

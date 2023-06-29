@@ -7,8 +7,7 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    private  $user = User::class;
-    
+
     /**u
      * Display a listing of the resource.
      *
@@ -16,12 +15,10 @@ class UserController extends Controller
      */
     public function index()
     {
+        $data['users'] = User::orderBy('id', 'asc')->paginate(10);
 
-        $data['users'] = User::orderBy('id','desc')->paginate(50);
-
-        return view('users.index',$data);
-
-     } 
+        return view('users.index', $data);
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -30,7 +27,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return response(view('users.create'));
     }
 
     /**
@@ -52,7 +49,9 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $data['user'] = User::where('id', $id);
+
+        return response(view('users.show', $data));
     }
 
     /**
@@ -63,7 +62,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        
     }
 
     /**
@@ -86,6 +86,10 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        $user = User::find($id);
+        $user->delete();
+
+        return redirect()->route('usuarios.index')->with('success', 'El usuario ha sido eliminado');
     }
 }

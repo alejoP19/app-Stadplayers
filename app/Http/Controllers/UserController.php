@@ -38,7 +38,24 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'primer_nombre' => 'required',
+            'primer_apellido' => 'required',
+            'email' => 'required|unique:users|max:50',
+            'password' => 'required'
+        ]);
+
+        $user = new User;
+        $user->primer_nombre = $request->primer_nombre;
+        $user->segundo_nombre = $request->segundo_nombre;
+        $user->primer_apellido = $request->primer_apellido;
+        $user->segundo_apellido = $request->segundo_apellido;
+        $user->email = $request->email;
+        $user->nickname = $request->nickname;
+        $user->password = $request->password;
+        $user->save();
+
+        return redirect()->route('usuarios.index')->with('success', 'El usuario ha sido creado exitosamente.');
     }
 
     /**

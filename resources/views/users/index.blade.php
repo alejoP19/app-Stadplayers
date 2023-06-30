@@ -16,7 +16,7 @@
         <div class="row">
             <div class="col">
                 <h2>Usuarios</h2>
-                <a class="btn btn-success" href="{{ route('usuarios.create') }}"> Create Company</a>
+                <a class="btn btn-success" href="{{ route('usuarios.create') }}"> Crear Usuario</a>
                 @if ($message = Session::get('success'))
                     <div class="alert alert-success">
                         <p>{{ $message }}</p>
@@ -49,13 +49,13 @@
                                 <td>{{ $user->segundo_apellido }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>
-                                    <a class="btn btn-primary" href="{{ route('usuarios.edit', $user->id) }}">Edit</a>
+                                    <a class="btn btn-primary" href="{{ route('usuarios.edit', $user->id) }}">Editar</a>
                                 </td>
                                 <td>
                                     <form action="{{ route('usuarios.destroy', $user->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                        <button type="submit" class="btn btn-danger">Eliminar</button>
                                     </form>
                                 </td>
                             </tr>
